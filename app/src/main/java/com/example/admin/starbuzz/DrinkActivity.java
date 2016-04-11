@@ -1,11 +1,11 @@
 package com.example.admin.starbuzz;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DrinkActivity extends AppCompatActivity {
+public class DrinkActivity extends Activity {
 public final static String EXTRA_DRINKNO = "drinkNo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
