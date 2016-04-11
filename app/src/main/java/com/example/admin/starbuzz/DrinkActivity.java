@@ -1,6 +1,7 @@
 package com.example.admin.starbuzz;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,8 +13,9 @@ public final static String EXTRA_DRINKNO = "drinkNo";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink);
         int drinkNo = (Integer) getIntent().getExtras().get(EXTRA_DRINKNO);
-        Drink drink = Drink.drinks[drinkNo];
-
+//        Drink drink = Drink.drinks[drinkNo];
+        Cursor cursor = db.query("DRINK", new String [] {"NAME", "DESCRIPTION" , "IMAGE_RESOURCE_ID"}
+        ,"_id = ?", new String[] {Integer.toString(drinkNo)}, null, null, null);
         ImageView imageView = (ImageView) findViewById(R.id.photo);
         imageView.setImageResource(drink.getImageResourceId());
         imageView.setContentDescription(drink.getDescription());
