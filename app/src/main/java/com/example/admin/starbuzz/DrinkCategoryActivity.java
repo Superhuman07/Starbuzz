@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class DrinkCategoryActivity extends ListActivity {
 private SQLiteDatabase db;
     private Cursor cursor;
-    ListView listDrinks = getListView();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +25,7 @@ private SQLiteDatabase db;
         );
         ListView listView = getListView();
         listView.setAdapter(listAdapter);*/
+        ListView listDrinks = getListView();
         try{
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             db = starbuzzDatabaseHelper.getReadableDatabase();
