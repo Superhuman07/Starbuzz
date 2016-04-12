@@ -2,6 +2,8 @@ package com.example.admin.starbuzz;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +16,8 @@ public final static String EXTRA_DRINKNO = "drinkNo";
         setContentView(R.layout.activity_drink);
         int drinkNo = (Integer) getIntent().getExtras().get(EXTRA_DRINKNO);
 //        Drink drink = Drink.drinks[drinkNo];
+        SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper();
+        SQLiteDatabase db = starbuzzDatabaseHelper.getReadableDatabase();
         Cursor cursor = db.query("DRINK", new String [] {"NAME", "DESCRIPTION" , "IMAGE_RESOURCE_ID"}
         ,"_id = ?", new String[] {Integer.toString(drinkNo)}, null, null, null);
         ImageView imageView = (ImageView) findViewById(R.id.photo);
